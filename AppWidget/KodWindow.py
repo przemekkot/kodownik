@@ -11,10 +11,11 @@ class KodWindow(GridLayout):
     spacing = VariableListProperty(50, length=2)
 
     name_label = Label(text="Nazwa")
-    kod_label = Label(text="123")
+    code_label = Label(text="123")
+    next_code_button = Button(text="Next")
 
     def __init__(self, **kwargs):
         super(KodWindow, self).__init__(**kwargs)
         self.add_widget(self.name_label)
-        self.add_widget(kod_label)
-        self.add_widget(Button(text="Next"))
+        self.add_widget(self.code_label)
+        self.add_widget(self.next_code_button)
