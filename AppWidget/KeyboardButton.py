@@ -6,6 +6,8 @@ class KeyboardButton(Button):
     def __init__(self, **kwargs):
         super(KeyboardButton, self).__init__(**kwargs)
         self.background_color = [.1, .1, .1, 1]
+        self.font_size = 30
+        self.bold = True
 
     def reset_background(self):
         self.background_color = [.1, .1, .1, 1]
