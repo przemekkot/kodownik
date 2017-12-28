@@ -23,8 +23,7 @@ class KodWindow(GridLayout):
     spacing = VariableListProperty(10, length=2)
 
     name_label = CodeNameLabel(text=_choose_code, font_size=30, size_hint=(.5,.5))
-
-    code_label = Keyboard(cols=1, rows=1)
+    keyboard = Keyboard(cols=1, rows=1)
     next_code_button = Button(text=_next_code, size_hint=(.3, .3))
 
     codes = Codes()
@@ -33,7 +32,7 @@ class KodWindow(GridLayout):
         super(KodWindow, self).__init__(**kwargs)
 
         self.add_widget(self.name_label)
-        self.add_widget(self.code_label)
+        self.add_widget(self.keyboard)
         self.add_widget(self.next_code_button)
 
         self.next_code_button.bind(on_press=self.choose_next_code)
@@ -43,7 +42,7 @@ class KodWindow(GridLayout):
         code = str(code[2])
 
         self.name_label.text = code_name.upper().strip()
-        self.code_label.text = code.strip()
+        self.keyboard.show_code(code.strip())
 
     def choose_next_code(self, button_instance):
         try:
