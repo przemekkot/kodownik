@@ -6,6 +6,8 @@ import csv
 # File format:
 # Name, type of quantity = (szt, kg), code
 # first row is column names
+import random
+
 
 class Codes():
 
@@ -18,3 +20,5 @@ class Codes():
     def pick_one(self):
         return self.codes_list.pop()
 
+    def pick_random(self):
+        return random.choice(self.codes_list)

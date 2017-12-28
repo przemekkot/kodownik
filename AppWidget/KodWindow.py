@@ -7,17 +7,26 @@ from kivy.uix.label import Label
 
 from AppLibraries.Codes import Codes
 
+_no_code_name = "Brak kodu"
+_choose_code = "Wybierz kod"
+_next_code = "Następny kod"
+_empty_string = ""
+_no_code = ""
+
 FRUIT_CODES_FILE = "Data/kody_produktow_owoce.csv"
 VEGETABLES_CODES_FILE = "Data/kody_produktow_warzywa.csv"
 BREAD_CODES_FILE = "Data/kody_produktow_pieczywo.csv"
+
+EMPTY_CODE = [_no_code_name, _empty_string, _no_code]
+
 
 class KodWindow(GridLayout):
     padding = VariableListProperty(100)
     spacing = VariableListProperty(50, length=2)
 
-    name_label = Label(text="Nazwa kodu")
-    code_label = Label(text="123")
-    next_code_button = Button(text="Następny kod")
+    name_label = Label(text=_choose_code)
+    code_label = Label(text=_empty_string)
+    next_code_button = Button(text=_next_code)
 
     codes_for_fruits = Codes(FRUIT_CODES_FILE)
 
@@ -31,7 +40,15 @@ class KodWindow(GridLayout):
 
         self.next_code_button.bind(on_press=self.choose_next_code)
 
+    def set_new_code(self, code):
+        code_name = str(code[0])
+        code = str(code[2])
+
+        self.name_label.text = code_name.upper().strip()
+        self.code_label.text = code.strip()
+
     def choose_next_code(self, button_instance):
-            code = self.codes_for_fruits.pick_one()
-            self.name_label.text = code[0]
-            self.code_label.text = code[2]
+        try:
+            self.set_new_code(self.codes_for_fruits.pick_random())
+        except IndexError:
+            self.set_new_code(EMPTY_CODE)
