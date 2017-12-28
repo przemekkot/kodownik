@@ -14,8 +14,9 @@ class Keyboard(GridLayout):
         self.keyboard = GridLayout(rows=4, cols=3)
         self.keyboard.spacing = [5, 5]
         for number in self.numbers:
-            self.keyboard_buttons[number] = KeyboardButton(text=number)
-            self.keyboard.add_widget(self.keyboard_buttons[number])
+            button = KeyboardButton(text=number)
+            self.keyboard.add_widget(button)
+            self.keyboard_buttons[number] = button
         self.add_widget(self.keyboard)
 
     def reset_buttons(self):
