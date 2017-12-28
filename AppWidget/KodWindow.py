@@ -6,6 +6,8 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 
 from AppLibraries.Codes import Codes
+from AppWidget.CodeLabel import CodeLabel
+from AppWidget.CodeNameLabel import CodeNameLabel
 
 _no_code_name = "Brak kodu"
 _choose_code = "Wybierz kod"
@@ -22,11 +24,12 @@ EMPTY_CODE = [_no_code_name, _empty_string, _no_code]
 
 class KodWindow(GridLayout):
     padding = VariableListProperty(100)
-    spacing = VariableListProperty(50, length=2)
+    spacing = VariableListProperty(10, length=2)
 
-    name_label = Label(text=_choose_code)
-    code_label = Label(text=_empty_string)
-    next_code_button = Button(text=_next_code)
+    name_label = CodeNameLabel(text=_choose_code, font_size=30, size_hint=(.5,.5))
+
+    code_label = CodeLabel(text=_empty_string, bold=True, font_size=84)
+    next_code_button = Button(text=_next_code, size_hint=(.3, .3))
 
     codes_for_fruits = Codes(FRUIT_CODES_FILE)
 
