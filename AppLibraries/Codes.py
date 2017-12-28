@@ -42,4 +42,3 @@ class Codes():
             csv_file = open(file, newline='')
             codes_list = list(csv.reader(csv_file, delimiter=";"))
             self.codes[type] = codes_list[1:]
-        print(self.codes)
