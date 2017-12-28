@@ -22,8 +22,10 @@ class KodWindow(GridLayout):
     padding = VariableListProperty(100)
     spacing = VariableListProperty(10, length=2)
 
-    name_label = CodeNameLabel(text=_choose_code, font_size=30, size_hint=(.5,.5))
-    keyboard = Keyboard(cols=1, rows=1)
+    name_label = CodeNameLabel(text=_choose_code, font_size=40, size_hint=(.5,.5))
+    code_label = CodeLabel(text=_empty_string, bold=True, font_size=84)
+
+    keyboard = Keyboard(cols=1, rows=1, code_label=code_label, size_hint=(.5,.5))
     next_code_button = Button(text=_next_code, size_hint=(.3, .3))
 
     codes = Codes()
@@ -32,10 +34,11 @@ class KodWindow(GridLayout):
         super(KodWindow, self).__init__(**kwargs)
 
         self.add_widget(self.name_label)
+        self.add_widget(self.code_label)
         self.add_widget(self.keyboard)
         self.add_widget(self.next_code_button)
 
-        self.next_code_button.bind(on_press=self.choose_next_code)
+        self.next_code_button.bind(on_press=self.choose_next_code_callaback)
 
     def set_new_code(self, code):
         code_name = str(code[0])
@@ -44,7 +47,10 @@ class KodWindow(GridLayout):
         self.name_label.text = code_name.upper().strip()
         self.keyboard.show_code(code.strip())
 
-    def choose_next_code(self, button_instance):
+    def choose_next_code_callaback(self, button_instance):
+        self.choose_next_code()
+
+    def choose_next_code(self):
         try:
             self.set_new_code(self.codes.pick_random())
         except IndexError:

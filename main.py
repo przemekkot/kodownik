@@ -5,7 +5,7 @@ from kivy.lang import Builder
 from AppClass.MainApp import MainApp
 
 main_kv_file = 'kvfiles/main.kv'
-app_size = {"width": 800, "height": 600}
+app_size = {"width": 800, "height": 900}
 
 if __name__ == "__main__":
     Config.set('graphics', 'width', app_size.get("width"))

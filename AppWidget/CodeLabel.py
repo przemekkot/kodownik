@@ -6,6 +6,9 @@ from kivy.graphics.vertex_instructions import Rectangle
 
 
 class CodeLabel(Label):
+    def clear_text(self):
+        self.text = ""
+
     def on_size(self, *args):
         self.canvas.before.clear()
         with self.canvas.before:
