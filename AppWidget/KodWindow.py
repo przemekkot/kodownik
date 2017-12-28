@@ -5,6 +5,8 @@ from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 
+from AppLibraries.Codes import Codes
+
 
 class KodWindow(GridLayout):
     padding = VariableListProperty(100)
@@ -23,5 +25,7 @@ class KodWindow(GridLayout):
         self.next_code_button.bind(on_press=self.choose_next_code)
 
     def choose_next_code(self, button_instance):
-            self.name_label.text = "Następna nazwa Kodu"
-            self.code_label.text = "234"
+            codes_for_fruits = Codes("Data/kody_produktow_owoce.csv")
+            code = codes_for_fruits.pick_one()
+            self.name_label.text = code[0]
+            self.code_label.text = code[2]
