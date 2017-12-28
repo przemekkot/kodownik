@@ -15,10 +15,7 @@ _next_code = "Następny kod"
 _empty_string = ""
 _no_code = ""
 
-
-
 EMPTY_CODE = [_no_code_name, _empty_string, _no_code]
-
 
 class KodWindow(GridLayout):
     padding = VariableListProperty(100)
@@ -33,7 +30,6 @@ class KodWindow(GridLayout):
 
     def __init__(self, **kwargs):
         super(KodWindow, self).__init__(**kwargs)
-
 
         self.add_widget(self.name_label)
         self.add_widget(self.code_label)
