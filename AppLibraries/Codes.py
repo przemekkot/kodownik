@@ -1,24 +1,45 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import csv
-
+import random
 
 # File format:
 # Name, type of quantity = (szt, kg), code
 # first row is column names
-import random
+FRUIT_CODES_FILE = "Data/kody_produktow_owoce.csv"
+VEGETABLES_CODES_FILE = "Data/kody_produktow_warzywa.csv"
+BREAD_CODES_FILE = "Data/kody_produktow_pieczywo.csv"
 
+FRUIT = "fruit"
+VEGETABLE = "vegetables"
+BREAD = "bread"
 
 class Codes():
+    codes_types = [FRUIT, VEGETABLE, BREAD]
 
-    def __init__(self, file):
-        csv_file = open(file, newline='')
-        codes_list= list(csv.reader(csv_file, delimiter=";"))
-        self.codes_list = codes_list[1:]
-        csv_file.close()
+    codes_files = {
+        FRUIT: FRUIT_CODES_FILE,
+        VEGETABLE: VEGETABLES_CODES_FILE,
+        BREAD: BREAD_CODES_FILE}
 
-    def pick_one(self):
-        return self.codes_list.pop()
+    codes = {
+        FRUIT: None,
+        VEGETABLE: None,
+        BREAD: None}
+
+    def __init__(self):
+        self.load_codes()
 
     def pick_random(self):
-        return random.choice(self.codes_list)
+        type = self.pick_type()
+        return random.choice(self.codes[type])
+
+    def pick_type(self):
+        return random.choice(self.codes_types)
+
+    def load_codes(self):
+        for type, file in self.codes_files.items():
+            csv_file = open(file, newline='')
+            codes_list = list(csv.reader(csv_file, delimiter=";"))
+            self.codes[type] = codes_list[1:]
+        print(self.codes)

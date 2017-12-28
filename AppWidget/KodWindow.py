@@ -15,9 +15,7 @@ _next_code = "Następny kod"
 _empty_string = ""
 _no_code = ""
 
-FRUIT_CODES_FILE = "Data/kody_produktow_owoce.csv"
-VEGETABLES_CODES_FILE = "Data/kody_produktow_warzywa.csv"
-BREAD_CODES_FILE = "Data/kody_produktow_pieczywo.csv"
+
 
 EMPTY_CODE = [_no_code_name, _empty_string, _no_code]
 
@@ -31,7 +29,7 @@ class KodWindow(GridLayout):
     code_label = CodeLabel(text=_empty_string, bold=True, font_size=84)
     next_code_button = Button(text=_next_code, size_hint=(.3, .3))
 
-    codes_for_fruits = Codes(FRUIT_CODES_FILE)
+    codes = Codes()
 
     def __init__(self, **kwargs):
         super(KodWindow, self).__init__(**kwargs)
@@ -52,6 +50,6 @@ class KodWindow(GridLayout):
 
     def choose_next_code(self, button_instance):
         try:
-            self.set_new_code(self.codes_for_fruits.pick_random())
+            self.set_new_code(self.codes.pick_random())
         except IndexError:
             self.set_new_code(EMPTY_CODE)
