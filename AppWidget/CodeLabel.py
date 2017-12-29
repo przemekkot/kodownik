@@ -25,6 +25,9 @@ class CodeLabel(Label):
             Rectangle(pos=self.pos, size=self.size)
 
     def on_size(self, *args):
+        self.reset_background()
+
+    def reset_background(self):
         self.make_background(GREY_COLOR)
 
     def is_right(self):
