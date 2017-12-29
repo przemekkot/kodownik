@@ -3,6 +3,7 @@
 from kivy.uix.button import Button
 
 class KeyboardButton(Button):
+    size_hint = (1, .8)
     def __init__(self, **kwargs):
         super(KeyboardButton, self).__init__(**kwargs)
 
