@@ -5,8 +5,11 @@ from kivy.graphics.context_instructions import Color
 from kivy.graphics.vertex_instructions import Rectangle
 
 class CodeNameLabel(Label):
+    font_size = 40
+    size_hint = (.3, .3)
+
     def on_size(self, *args):
         self.canvas.before.clear()
         with self.canvas.before:
-            Color(0, 0, 1, 0.25)
+            Color(59/255,	118/255,	191/255, 1)
             Rectangle(pos=self.pos, size=self.size)
