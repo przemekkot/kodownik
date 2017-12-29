@@ -53,7 +53,7 @@ class Keyboard(GridLayout):
             self.show_code(self.code_presenter.code)
             return
 
-        button.show_green()
+        button.show_green(self.code_presenter.sign_shown)
         self.code_label.text = self.code_label.text + button.text
         try:
             self.highlight_next_button()

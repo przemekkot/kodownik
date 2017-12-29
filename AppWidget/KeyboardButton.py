@@ -8,6 +8,7 @@ class KeyboardButton(Button):
         super(KeyboardButton, self).__init__(**kwargs)
 
         self.to_be_pressed = False
+        self.background_normal = ''
         self.background_color = [.1, .1, .1, 1]
         self.font_size = 30
         self.bold = True
@@ -16,10 +17,10 @@ class KeyboardButton(Button):
         self.to_be_pressed = False
         self.background_color = [.1, .1, .1, 1]
 
-    def show_green(self, alpha_divider):
+    def show_green(self, alpha = 1):
         self.to_be_pressed = False
-        self.alpha = 1 / alpha_divider
-        self.background_color = [0/255, 102/255, 34/255, self.alpha]
+        alpha = alpha / 6
+        self.background_color = [1, 49/255, 218/255, alpha]
 
     def highlight(self):
         self.to_be_pressed = True

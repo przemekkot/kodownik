@@ -5,6 +5,7 @@ class CodePresenter:
     code = ""
     code_signs = []
     empty = True
+    sign_shown = 0
 
     def __init__(self, code=""):
         self.code = code
@@ -14,8 +15,13 @@ class CodePresenter:
     def make_signs(self, code):
         self.code_signs = list(code)
         self.code_signs.reverse()
+        self.sign_shown = 1
+
+    def get_fraction(self):
+        return self.sign_shown / len(self.code)
 
     def next_sign(self):
+        self.sign_shown += 1
         return self.code_signs.pop()
 
     def is_code_right(self, entered_code):
