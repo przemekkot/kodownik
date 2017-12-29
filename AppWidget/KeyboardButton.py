@@ -16,8 +16,10 @@ class KeyboardButton(Button):
         self.to_be_pressed = False
         self.background_color = [.1, .1, .1, 1]
 
-    def show_green(self):
-        self.background_color = [0, .1, 0, 1]
+    def show_green(self, alpha_divider):
+        self.to_be_pressed = False
+        self.alpha = 1 / alpha_divider
+        self.background_color = [0/255, 102/255, 34/255, self.alpha]
 
     def highlight(self):
         self.to_be_pressed = True
