@@ -41,4 +41,5 @@ class Codes():
         for type, file in self.codes_files.items():
             csv_file = open(file, newline='')
             codes_list = list(csv.reader(csv_file, delimiter=";"))
+            codes_list = list(filter(lambda row: len(row[2]) < 5, codes_list ))
             self.codes[type] = codes_list[1:]
