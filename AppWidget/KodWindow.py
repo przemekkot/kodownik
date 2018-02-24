@@ -19,11 +19,11 @@ class KodWindow(GridLayout):
     spacing = VariableListProperty(10, length=2)
     code_manager = CodeManager()
 
-    code_name = CodeName(code_manager=code_manager)
-    code_number = CodeNumber(code_manager=code_manager)
-    keyboard = Keyboard(cols=1, rows=1, code_label=code_number, code_manager=code_manager)
-    submit_buttons = SubmitButtons(cols=2, rows=1, size_hint=(1, .3), code_manager=code_manager)
-    app_buttons = AppButtons(cols=2, rows=1, size_hint=(1, .3), code_manager=code_manager)
+    code_name = CodeName()
+    code_number = CodeNumber()
+    keyboard = Keyboard(cols=1, rows=1, code_label=code_number)
+    submit_buttons = SubmitButtons(cols=2, rows=1, size_hint=(1, .3))
+    app_buttons = AppButtons(cols=2, rows=1, size_hint=(1, .3))
 
     def __init__(self, **kwargs):
         super(KodWindow, self).__init__(**kwargs)

@@ -16,6 +16,9 @@ class CodeNumber(Label):
     size_hint = (.3, .3)
     text = ""
 
+    def setNumber(self, number):
+        self.text = number
+
     def clear_text(self):
         self.text = ""
 

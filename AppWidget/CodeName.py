@@ -10,7 +10,9 @@ _choose_code = "Wybierz kod"
 class CodeName(Label):
     font_size = 40
     size_hint = (.3, .3)
-    text = StringProperty()
+
+    def setName(self, name):
+        self.text = name
 
     def on_size(self, *args):
         self.canvas.before.clear()
