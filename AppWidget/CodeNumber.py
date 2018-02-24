@@ -10,10 +10,11 @@ GREEN_COLOR = "#42ba3e"
 RED_COLOR = "#f02e23"
 
 
-class CodeLabel(Label):
+class CodeNumber(Label):
     bold = True
     font_size = 84
     size_hint = (.3, .3)
+    text = ""
 
     def clear_text(self):
         self.text = ""

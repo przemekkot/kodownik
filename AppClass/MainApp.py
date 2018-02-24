@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 from kivy.app import App
 
-from AppWidget.Container import Container
+from AppWidget.KodownikWindow import KodownikWindow
 
 class MainApp(App):
     def build(self):
         self.title = 'MainApp'
-        return Container(cols=1, rows=1)
+        return KodownikWindow(cols=1, rows=1)

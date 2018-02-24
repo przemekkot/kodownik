@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from kivy.properties import StringProperty
 from kivy.uix.label import Label
 from kivy.graphics.context_instructions import Color
 from kivy.graphics.vertex_instructions import Rectangle
 
-class CodeNameLabel(Label):
+_choose_code = "Wybierz kod"
+
+class CodeName(Label):
     font_size = 40
     size_hint = (.3, .3)
+    text = StringProperty()
 
     def on_size(self, *args):
         self.canvas.before.clear()
