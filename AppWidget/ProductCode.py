@@ -10,11 +10,14 @@ GREEN_COLOR = "#42ba3e"
 RED_COLOR = "#f02e23"
 
 
-class CodeNumber(Label):
+class ProductCode(Label):
     bold = True
     font_size = 84
     size_hint = (.3, .3)
     text = ""
+
+    def handle_code_change(self, event, code):
+        self.setNumber(code.code)
 
     def setNumber(self, number):
         self.text = number

@@ -3,6 +3,8 @@
 from kivy.config import Config
 from kivy.lang import Builder
 from AppClass.MainApp import MainApp
+from AppLibraries.CodeEventDispatcher import code_dispatcher
+
 
 main_kv_file = 'kvfiles/main.kv'
 app_size = {"width": 800, "height": 900}

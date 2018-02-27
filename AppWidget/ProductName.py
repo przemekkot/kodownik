@@ -7,9 +7,12 @@ from kivy.graphics.vertex_instructions import Rectangle
 
 _choose_code = "Wybierz kod"
 
-class CodeName(Label):
+class ProductName(Label):
     font_size = 40
     size_hint = (.3, .3)
+
+    def handle_code_change(self, event, code):
+        self.setName(code.name)
 
     def setName(self, name):
         self.text = name

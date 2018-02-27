@@ -3,7 +3,7 @@
 from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
 
-from AppLibraries.CodePresenter import CodePresenter
+from AppLibraries.Code import Code
 from AppWidget.KeyboardButton import KeyboardButton
 
 
@@ -11,12 +11,11 @@ class Keyboard(GridLayout):
     size_hint = (.5, .8)
     numbers = ["7","8","9","4","5","6","1","2","3", "0", "00"]
     keyboard_buttons = {}
-    code_presenter = CodePresenter()
+    code_presenter = Code()
 
-    def __init__(self, **kwargs):
-        self.code_label = kwargs['code_label']
-        del kwargs['code_label']
-
+    def __init__(self, code_label=None, code_manager=None, **kwargs):
+        self.code_label = code_label
+        self.code_manager = code_manager
         super(Keyboard, self).__init__(**kwargs)
 
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
@@ -36,29 +35,31 @@ class Keyboard(GridLayout):
         for key, button in self.keyboard_buttons.items():
             button.reset_background()
 
+    def handle_code_change(self, event, code):
+        self.show_code(code)
+
     def show_code(self, code_string):
         self.reset_buttons()
         self.code_label.clear_text()
         self.code_label.reset_background()
-        self.code_presenter = CodePresenter(code_string)
+        self.code_presenter = self.code_manager.code
         self.highlight_next_button()
 
-
     def highlight_next_button(self,):
-        number = self.code_presenter.next_sign()
+        number = self.code_manager.code.next_sign()
         self.keyboard_buttons[number].highlight()
 
     def show_next_button(self, button):
         if not button.to_be_pressed:
-            self.show_code(self.code_presenter.code)
+            self.show_code(self.code_manager.code.code)
             return
 
-        button.show_green(self.code_presenter.sign_shown)
+        button.show_green(self.code_manager.code.sign_shown)
         self.code_label.text = self.code_label.text + button.text
         try:
             self.highlight_next_button()
         except IndexError:
-            if self.code_presenter.is_code_right(self.code_label.text):
+            if self.code_manager.code.is_code_right(self.code_label.text):
                 self.code_label.is_right()
             else:
                 self.code_label.is_wrong()
@@ -69,7 +70,7 @@ class Keyboard(GridLayout):
 
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
         if keycode[1] == "enter":
-            self.parent.choose_next_code()
+            self.code_manager.pick_product()
         try:
             number = int(keycode[1][-1])
             if 10 > number >= 0 :

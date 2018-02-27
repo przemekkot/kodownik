@@ -20,9 +20,10 @@ class AppButtons(GridLayout):
     back_button = Button(text=_back, size_hint=(.3, .3))
 
 
-    def __init__(self, **kwargs):
+    def __init__(self, code_manager=None, **kwargs):
         super(AppButtons, self).__init__(**kwargs)
         self.show_buttons()
+        self.code_manager = code_manager
 
     def show_buttons(self):
         self.add_widget(self.back_button)
@@ -42,10 +43,4 @@ class AppButtons(GridLayout):
         self.keyboard.show_code(code.strip())
 
     def choose_next_code_callaback(self, button_instance):
-        self.choose_next_code()
-
-    def choose_next_code(self):
-        try:
-            self.set_new_code(self.codes.pick_random())
-        except IndexError:
-            self.set_new_code(EMPTY_CODE)
+        self.code_manager.pick_product()

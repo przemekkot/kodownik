@@ -2,15 +2,15 @@
 # -*- coding: utf-8 -*-
 from kivy.uix.gridlayout import GridLayout
 
-from AppWidget.KodWindow import KodWindow
+from AppWidget.CodeScreen import CodeScreen
 from AppWidget.MainMenu import MainMenu
 
-class KodownikWindow(GridLayout):
-    kod_window = KodWindow(cols=1, rows=5)
+class AppWindow(GridLayout):
+    kod_window = CodeScreen(cols=1, rows=5)
     menu_window = MainMenu(cols=1, rows=3)
 
     def __init__(self, **kwargs):
-        super(KodownikWindow, self).__init__(**kwargs)
+        super(AppWindow, self).__init__(**kwargs)
         self.show_menu()
 
     def show_menu(self):
