@@ -4,6 +4,7 @@ from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
 
 from kodownik.components.Code import Code
+from kodownik.components.CodeEventDispatcher import code_dispatcher
 from kodownik.widget.KeyboardButton import KeyboardButton
 
 
@@ -14,6 +15,7 @@ class ScreenKeyboard(GridLayout):
     code_presenter = Code()
 
     def __init__(self, code_label=None, code_manager=None, **kwargs):
+        code_dispatcher.bind(on_product_change=self.handle_product_change)
         self.code_label = code_label
         self.code_manager = code_manager
         super(ScreenKeyboard, self).__init__(**kwargs)
