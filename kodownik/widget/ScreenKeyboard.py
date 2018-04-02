@@ -40,9 +40,9 @@ class ScreenKeyboard(GridLayout):
     def handle_product_change(self, event, code):
         self.show_code(code)
 
-    def show_code(self, code_string):
+    def show_code(self, code):
         self.reset_buttons()
-        self.code_presenter = self.code_manager.code
+        self.code_presenter = code
         self.highlight_next_button()
 
     def highlight_next_button(self,):
@@ -51,7 +51,7 @@ class ScreenKeyboard(GridLayout):
 
     def show_next_button(self, button):
         if not button.to_be_pressed:
-            self.show_code(self.code_manager.code.code)
+            self.show_code(self.code_manager.code)
             return
 
         button.show_green(self.code_manager.code.sign_shown)
