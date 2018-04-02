@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 from kivy.properties import ObjectProperty
 
-from AppLibraries.Code import Code
-from AppLibraries.ProductLists import ProductLists
-from AppLibraries.CodeEventDispatcher import code_dispatcher
+from kodownik.components.Code import Code
+from kodownik.components.CodeEventDispatcher import code_dispatcher
+from kodownik.components.ProductLists import ProductLists
+
 
 class CodeManager:
     products = ProductLists()

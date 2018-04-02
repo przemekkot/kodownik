@@ -2,11 +2,15 @@
 # -*- coding: utf-8 -*-
 from kivy.config import Config
 from kivy.lang import Builder
-from AppClass.MainApp import MainApp
-from AppLibraries.CodeEventDispatcher import code_dispatcher
 
+from kodownik.app.MainApp import MainApp
 
-main_kv_file = 'kvfiles/main.kv'
+import logging
+import logging.config
+logging.config.fileConfig('logging.conf')
+logger = logging.getLogger(__name__)
+
+main_kv_file = 'kodownik/kvfiles/main.kv'
 app_size = {"width": 800, "height": 900}
 
 if __name__ == "__main__":

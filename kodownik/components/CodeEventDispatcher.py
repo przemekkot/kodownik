@@ -2,8 +2,6 @@
 # -*- coding: utf-8 -*-
 from kivy.event import EventDispatcher
 
-
-
 class CodeEventDispatcher(EventDispatcher):
     def __init__(self, **kwargs):
         self.register_event_type('on_product_change')

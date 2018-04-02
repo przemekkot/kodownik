@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from AppLibraries.Product import EmptyProduct
-
+from kodownik.components.Product import EmptyProduct
 
 class Code:
     code = ""

@@ -6,11 +6,11 @@ import random
 # File format:
 # Name, type of quantity = (szt, kg), code
 # first row is column names
-from AppLibraries.Product import Product
+from kodownik.components.Product import Product
 
-FRUIT_PRODUCTS_FILE = "Data/kody_produktow_owoce.csv"
-VEGETABLES_PRODUCTS_FILE = "Data/kody_produktow_warzywa.csv"
-BREAD_PRODUCTS_FILE = "Data/kody_produktow_pieczywo.csv"
+FRUIT_PRODUCTS_FILE = "kodownik/data/kody_produktow_owoce.csv"
+VEGETABLES_PRODUCTS_FILE = "kodownik/data/kody_produktow_warzywa.csv"
+BREAD_PRODUCTS_FILE = "kodownik/data/kody_produktow_pieczywo.csv"
 
 FRUIT = "fruit"
 VEGETABLE = "vegetables"

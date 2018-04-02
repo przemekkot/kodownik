@@ -4,13 +4,13 @@ from kivy.properties import VariableListProperty
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 
-from AppLibraries.CodeManager import CodeManager
-from AppWidget.AppButtons import AppButtons
-from AppWidget.ProductCode import ProductCode
-from AppWidget.ProductName import ProductName
-from AppWidget.ScreenKeyboard import ScreenKeyboard
-from AppWidget.SubmitButtons import SubmitButtons
-from AppLibraries.CodeEventDispatcher import code_dispatcher
+from kodownik.components.CodeEventDispatcher import code_dispatcher
+from kodownik.components.CodeManager import CodeManager
+from kodownik.widget.AppButtons import AppButtons
+from kodownik.widget.ProductCode import ProductCode
+from kodownik.widget.ProductName import ProductName
+from kodownik.widget.ScreenKeyboard import ScreenKeyboard
+from kodownik.widget.SubmitButtons import SubmitButtons
 
 
 class CodeScreen(GridLayout):

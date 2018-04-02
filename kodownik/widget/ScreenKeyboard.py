@@ -3,8 +3,8 @@
 from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
 
-from AppLibraries.Code import Code
-from AppWidget.KeyboardButton import KeyboardButton
+from kodownik.components.Code import Code
+from kodownik.widget.KeyboardButton import KeyboardButton
 
 
 class ScreenKeyboard(GridLayout):
