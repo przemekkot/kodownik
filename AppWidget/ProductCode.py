@@ -14,13 +14,23 @@ class ProductCode(Label):
     bold = True
     font_size = 84
     size_hint = (.3, .3)
-    text = ""
+
+    def __init__(self, **kwargs):
+        super(ProductCode, self).__init__(**kwargs)
+        self.text = ""
+
+    def handle_product_change(self, event, code):
+        self.clear_text()
+        self.reset_background()
+        self.setNumber("")
 
     def handle_code_change(self, event, code):
+        self.clear_text()
+        self.reset_background()
         self.setNumber(code.code)
 
     def setNumber(self, number):
-        self.text = number
+        self.text = str(number)
 
     def clear_text(self):
         self.text = ""

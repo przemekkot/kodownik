@@ -28,19 +28,11 @@ class AppButtons(GridLayout):
     def show_buttons(self):
         self.add_widget(self.back_button)
         self.add_widget(self.next_code_button)
+        self.next_code_button.bind(on_press=self.choose_next_code)
+        self.back_button.bind(on_press=self.go_back_to_main_menu)
 
-        self.next_code_button.bind(on_press=self.choose_next_code_callaback)
-        self.back_button.bind(on_press=self.back_to_mainmenu)
-
-    def back_to_mainmenu(self, back_button):
+    def go_back_to_main_menu(self, back_button):
         self.parent.parent.show_menu()
 
-    def set_new_code(self, code):
-        code_name = str(code[0])
-        code = str(code[2])
-
-        self.code_name.text = code_name.upper().strip()
-        self.keyboard.show_code(code.strip())
-
-    def choose_next_code_callaback(self, button_instance):
+    def choose_next_code(self, button_instance):
         self.code_manager.pick_product()

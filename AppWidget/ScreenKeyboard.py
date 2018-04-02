@@ -7,7 +7,7 @@ from AppLibraries.Code import Code
 from AppWidget.KeyboardButton import KeyboardButton
 
 
-class Keyboard(GridLayout):
+class ScreenKeyboard(GridLayout):
     size_hint = (.5, .8)
     numbers = ["7","8","9","4","5","6","1","2","3", "0", "00"]
     keyboard_buttons = {}
@@ -16,7 +16,7 @@ class Keyboard(GridLayout):
     def __init__(self, code_label=None, code_manager=None, **kwargs):
         self.code_label = code_label
         self.code_manager = code_manager
-        super(Keyboard, self).__init__(**kwargs)
+        super(ScreenKeyboard, self).__init__(**kwargs)
 
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
         self._keyboard.bind(on_key_down=self._on_keyboard_down)
@@ -35,13 +35,11 @@ class Keyboard(GridLayout):
         for key, button in self.keyboard_buttons.items():
             button.reset_background()
 
-    def handle_code_change(self, event, code):
+    def handle_product_change(self, event, code):
         self.show_code(code)
 
     def show_code(self, code_string):
         self.reset_buttons()
-        self.code_label.clear_text()
-        self.code_label.reset_background()
         self.code_presenter = self.code_manager.code
         self.highlight_next_button()
 
