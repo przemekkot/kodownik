@@ -16,7 +16,6 @@ class ProductName(Label):
     def __init__(self, **kwargs):
         code_dispatcher.bind(on_product_change=self.handle_product_change)
         super(ProductName, self).__init__(**kwargs)
-
     def handle_product_change(self, event, code):
         self.setName(code.name)
 

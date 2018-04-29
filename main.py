@@ -4,11 +4,7 @@ from kivy.config import Config
 from kivy.lang import Builder
 
 from kodownik.app.MainApp import MainApp
-
-import logging
-import logging.config
-logging.config.fileConfig('logging.conf')
-logger = logging.getLogger(__name__)
+from app_logger import kodlog
 
 main_kv_file = 'kodownik/kvfiles/main.kv'
 app_size = {"width": 800, "height": 900}
@@ -20,3 +16,4 @@ if __name__ == "__main__":
     Builder.load_file(main_kv_file)
     app = MainApp()
     app.run()
+    kodlog.debug("App is run")

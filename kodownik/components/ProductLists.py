@@ -8,7 +8,8 @@ import random
 # first row is column names
 from kodownik.components.Product import Product
 
-FRUIT_PRODUCTS_FILE = "kodownik/data/kody_produktow_owoce.csv"
+# FRUIT_PRODUCTS_FILE = "kodownik/data/kody_produktow_owoce.csv"
+FRUIT_PRODUCTS_FILE = "kodownik/data/fruit_output.csv"
 VEGETABLES_PRODUCTS_FILE = "kodownik/data/kody_produktow_warzywa.csv"
 BREAD_PRODUCTS_FILE = "kodownik/data/kody_produktow_pieczywo.csv"
 
@@ -17,7 +18,8 @@ VEGETABLE = "vegetables"
 BREAD = "bread"
 
 class ProductLists():
-    product_types = [FRUIT, VEGETABLE, BREAD]
+    # product_types = [FRUIT, VEGETABLE, BREAD]
+    product_types = [FRUIT]
 
     product_files = {
         FRUIT: FRUIT_PRODUCTS_FILE,

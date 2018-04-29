@@ -19,6 +19,7 @@ class ProductCode(Label):
 
     def __init__(self, **kwargs):
         code_dispatcher.bind(on_product_change=self.handle_product_change)
+        code_dispatcher.bind(on_code_change=self.handle_code_change)
         super(ProductCode, self).__init__(**kwargs)
         self.text = ""
 
@@ -30,7 +31,11 @@ class ProductCode(Label):
     def handle_code_change(self, event, code):
         self.clear_text()
         self.reset_background()
-        self.setNumber(code.code)
+        self.setNumber(code.get_user_code())
+        if code.is_right:
+            self.is_right()
+        if code.is_wrong:
+            self.is_wrong()
 
     def setNumber(self, number):
         self.text = str(number)

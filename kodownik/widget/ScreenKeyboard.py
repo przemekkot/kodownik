@@ -28,7 +28,7 @@ class ScreenKeyboard(GridLayout):
 
         for number in self.numbers:
             button = KeyboardButton(text=number)
-            button.bind(on_press=self.show_next_button)
+            button.bind(on_press=self.dispatch_number_entered)
             self.keyboard.add_widget(button)
             self.keyboard_buttons[number] = button
         self.add_widget(self.keyboard)
@@ -40,14 +40,16 @@ class ScreenKeyboard(GridLayout):
     def handle_product_change(self, event, code):
         self.show_code(code)
 
+    def dispatch_number_entered(self, button):
+        code_dispatcher.dispatch_number_event(button.text)
+
     def show_code(self, code):
         self.reset_buttons()
         self.code_presenter = code
         self.highlight_next_button()
 
-    def highlight_next_button(self,):
-        number = self.code_manager.code.next_sign()
-        self.keyboard_buttons[number].highlight()
+    def highlight_next_button(self):
+        self.keyboard_buttons[self.code_presenter.highlight_numbers[-1]].highlight()
 
     def show_next_button(self, button):
         if not button.to_be_pressed:
