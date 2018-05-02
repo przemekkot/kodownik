@@ -26,9 +26,9 @@ class ResultScreenTestCase(unittest.TestCase):
         )
 
     def test_if_has_test_codes_list(self):
-        self.assertTrue(self.result_screen.test_codes)
+        self.assertTrue(self.result_screen.codes_list)
         self.assertIsInstance(
-            self.result_screen.test_codes,
+            self.result_screen.codes_list,
             GridLayout
         )
 

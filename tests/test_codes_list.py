@@ -3,8 +3,10 @@ import unittest
 # if_is
 from kivy.uix.gridlayout import GridLayout
 
+from kodownik.widget.CodesList import CodesList
 
-class CodesList(unittest.TestCase):
+
+class CodesListTestCase(unittest.TestCase):
     def setUp(self):
         self.codes_list = CodesList()
 

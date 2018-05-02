@@ -3,7 +3,7 @@ import unittest
 # if_is
 from kivy.uix.label import Label
 
-from kodownik.widget.test_result import TestResult
+from kodownik.widget.TestResult import TestResult
 
 
 class TestResultTestCase(unittest.TestCase):

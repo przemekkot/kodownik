@@ -5,7 +5,7 @@ from kivy.uix.gridlayout import GridLayout
 
 from kodownik.components.Code import Code
 from kodownik.components.CodeEventDispatcher import code_dispatcher
-from kodownik.widget.KeyboardButton import KeyboardButton
+from kodownik.widget.button.KeyboardButton import KeyboardButton
 
 
 class ScreenKeyboard(GridLayout):

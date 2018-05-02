@@ -4,11 +4,11 @@ from kivy.properties import VariableListProperty
 from kivy.uix.gridlayout import GridLayout
 
 from kodownik.components.CodeManager import CodeManager
-from kodownik.widget.AppButtons import AppButtons
+from kodownik.widget.button.AppButtons import AppButtons
 from kodownik.widget.label.ProductCode import ProductCode
 from kodownik.widget.label.ProductName import ProductName
 from kodownik.widget.ScreenKeyboard import ScreenKeyboard
-from kodownik.widget.SubmitButtons import SubmitButtons
+from kodownik.widget.button.SubmitButtons import SubmitButtons
 
 
 class CodeScreen(GridLayout):
