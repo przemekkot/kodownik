@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from kivy.app import App
 
-from kodownik.widget.MenuScreen import MenuScreen
+from kodownik.widget.screen.MenuScreen import MenuScreen
 
 
 class MainApp(App):

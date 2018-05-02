@@ -5,8 +5,8 @@ from kivy.uix.gridlayout import GridLayout
 
 from kodownik.components.CodeManager import CodeManager
 from kodownik.widget.AppButtons import AppButtons
-from kodownik.widget.ProductCode import ProductCode
-from kodownik.widget.ProductName import ProductName
+from kodownik.widget.label.ProductCode import ProductCode
+from kodownik.widget.label.ProductName import ProductName
 from kodownik.widget.ScreenKeyboard import ScreenKeyboard
 from kodownik.widget.SubmitButtons import SubmitButtons
 
