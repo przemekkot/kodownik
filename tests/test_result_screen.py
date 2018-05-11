@@ -35,17 +35,17 @@ class ResultScreenTestCase(unittest.TestCase):
     def test_if_has_results_buttons(self):
         self.assertTrue(self.result_screen.result_buttons)
         self.assertIsInstance(
-            self.result_screen.test_codes,
+            self.result_screen.result_buttons,
             GridLayout
         )
 
         self.assertIsInstance(
-            self.result_screen.test_codes.repeat,
+            self.result_screen.result_buttons.repeat_button,
             Button
         )
 
         self.assertIsInstance(
-            self.result_screen.test_codes.back,
+            self.result_screen.result_buttons.back_button,
             Button
         )
 
