@@ -41,6 +41,7 @@ class ScreenKeyboard(GridLayout):
         self.show_code(code)
 
     def dispatch_number_entered(self, button):
+        # @todo: add dispatch_number_event
         code_dispatcher.dispatch_number_event(button.text)
 
     def show_code(self, code):

@@ -21,6 +21,7 @@ class CodeManager:
         self.code = Code(self.product)
         kodlog.info("I picked product: " + self.code.name)
         self.dispatch_product_code()
+        return self.code
 
     def handle_number_enter(self, event, number):
         print(number)
