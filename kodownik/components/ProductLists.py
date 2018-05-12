@@ -6,25 +6,28 @@ import random
 # File format:
 # Name, type of quantity = (szt, kg), code
 # first row is column names
+from os import path
+
 from kodownik.components.Product import Product
 
 # FRUIT_PRODUCTS_FILE = "kodownik/data/kody_produktow_owoce.csv"
-FRUIT_PRODUCTS_FILE = "kodownik/data/fruit_output.csv"
-VEGETABLES_PRODUCTS_FILE = "kodownik/data/kody_produktow_warzywa.csv"
-BREAD_PRODUCTS_FILE = "kodownik/data/kody_produktow_pieczywo.csv"
+FRUIT_PRODUCTS_FILE = "/../data/fruit_output.csv"
+VEGETABLES_PRODUCTS_FILE = "/../data/kody_produktow_warzywa.csv"
+BREAD_PRODUCTS_FILE = "/../data/kody_produktow_pieczywo.csv"
 
 FRUIT = "fruit"
 VEGETABLE = "vegetables"
 BREAD = "bread"
+CURRENT_DIR = path.dirname(__file__)
 
 class ProductLists():
     # product_types = [FRUIT, VEGETABLE, BREAD]
     product_types = [FRUIT]
 
     product_files = {
-        FRUIT: FRUIT_PRODUCTS_FILE,
-        VEGETABLE: VEGETABLES_PRODUCTS_FILE,
-        BREAD: BREAD_PRODUCTS_FILE}
+        FRUIT: CURRENT_DIR + FRUIT_PRODUCTS_FILE,
+        VEGETABLE: CURRENT_DIR + VEGETABLES_PRODUCTS_FILE,
+        BREAD: CURRENT_DIR + BREAD_PRODUCTS_FILE}
 
     products = {
         FRUIT: None,

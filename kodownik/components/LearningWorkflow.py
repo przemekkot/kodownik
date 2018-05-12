@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from kodownik.components.Code import Code
+from kodownik.components.Workflow import Workflow
 
 
-class TestWorkflow:
+class  LearningWorkflow(Workflow):
     def __init__(self, cm, product_name, product_code, screen_keyboard, submit_buttons):
         """  This is a class that will be responsible for test workflow.
             Order of functions is top-bottom, that's alse the order of the workflow.
@@ -38,13 +39,13 @@ class TestWorkflow:
     def show_product(self):
         self.entered_code = Code()
         self.product_code.handle_product_change(None, self.entered_code)
-        self.product_name.handle_product_change(self.picked_code)
+        self.product_name.handle_product_change(None, self.picked_code)
         self.submit_buttons.handle_product_change(self.picked_code)
-        self.screen_keyboard.handle_product_change(self.picked_code)
+        self.screen_keyboard.handle_product_change(None, self.picked_code)
 
-    def handle_user_enter_number(self, event, button_text):
-        if self.screen_keyboard.button_to_be_pressed(button_text):
-            self.entered_code.add_number(button_text)
+    def handle_user_enter_number(self, event, number):
+        if self.screen_keyboard.is_highlighted_button(number):
+            self.entered_code.add_number(number)
 
             if self.entered_code == self.picked_code:
                 self.submit_buttons.highlight_submit_button()
@@ -57,8 +58,8 @@ class TestWorkflow:
         self.product_code.handle_product_change(None, self.entered_code)
         self.screen_keyboard.highlight_next_button()
 
-    def handle_user_submit_code(self, event, button_pressed):
-        if self.picked_code.proper_submit(button_pressed):
+    def handle_user_submit_code(self, event, quantity):
+        if self.picked_code.has_quantity(quantity):
             self.pick_a_product()
         else:
             self.show_product()

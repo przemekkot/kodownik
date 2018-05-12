@@ -3,7 +3,7 @@
 import unittest
 
 from tests.test_codes_list import CodesListTestCase
-from tests.test_result_buttons import ResultButtonsTestCase
+from tests.buttons.test_result_buttons import ResultButtonsTestCase
 from tests.test_result_screen import ResultScreenTestCase
 from tests.test_test_result import TestResultTestCase
 
