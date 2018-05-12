@@ -39,9 +39,9 @@ class  LearningWorkflow(Workflow):
     def show_product(self):
         self.entered_code = Code()
         self.product_code.handle_product_change(None, self.entered_code)
-        self.product_name.handle_product_change(self.picked_code)
+        self.product_name.handle_product_change(None, self.picked_code)
         self.submit_buttons.handle_product_change(self.picked_code)
-        self.screen_keyboard.handle_product_change(self.picked_code)
+        self.screen_keyboard.handle_product_change(None, self.picked_code)
 
     def handle_user_enter_number(self, event, number):
         if self.screen_keyboard.is_highlighted_button(number):
