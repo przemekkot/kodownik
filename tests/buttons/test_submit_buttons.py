@@ -43,12 +43,12 @@ class SubmitButtonsTestCase(unittest.TestCase):
         self.assertFalse(plu_button.highlighted)
         self.assertFalse(waga_button.highlighted)
 
-        self.submit_buttons.handle_product_change(self.test_code_plu)
+        self.submit_buttons.highlight_submit_button(self.test_code_plu)
 
         self.assertTrue(plu_button.highlighted)
         self.assertFalse(waga_button.highlighted)
 
-        self.submit_buttons.handle_product_change(self.test_code_waga)
+        self.submit_buttons.highlight_submit_button(self.test_code_waga)
 
         self.assertFalse(plu_button.highlighted)
         self.assertTrue(waga_button.highlighted)
@@ -57,10 +57,10 @@ class SubmitButtonsTestCase(unittest.TestCase):
         plu_button = self.submit_buttons.plu_button
         waga_button = self.submit_buttons.waga_button
 
-        self.submit_buttons.handle_product_change(self.test_code_plu)
+        self.submit_buttons.highlight_submit_button(self.test_code_plu)
         self.assertEqual(plu_button, self.submit_buttons.highlighted_button())
 
-        self.submit_buttons.handle_product_change(self.test_code_waga)
+        self.submit_buttons.highlight_submit_button(self.test_code_waga)
         self.assertEqual(waga_button, self.submit_buttons.highlighted_button())
 
         self.submit_buttons.reset_buttons()

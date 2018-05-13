@@ -5,7 +5,6 @@ from kivy.uix.gridlayout import GridLayout
 from kodownik.widget.screen.CodeScreen import CodeScreen
 from kodownik.widget.MainMenu import MainMenu
 
-
 class MenuScreen(GridLayout):
     kod_window = CodeScreen(cols=1, rows=5)
     menu_window = MainMenu(cols=1, rows=3)
