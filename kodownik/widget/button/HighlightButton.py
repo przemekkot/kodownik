@@ -23,3 +23,6 @@ class HighlightButton(Button):
     def highlight(self):
         self.highlighted = True
         self.background_color = [1, 0, 0, 1]
+
+    def is_highlighted(self):
+        return self.highlighted

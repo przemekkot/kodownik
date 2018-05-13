@@ -44,7 +44,7 @@ class ProductTestCase(unittest.TestCase):
         pass
 
     def test_pick_a_product(self):
-        self.learn.pick_a_product()
+        self.learn.pick_a_product(None)
 
         picked_code = self.learn.picked_code
         entered_code = self.learn.entered_code
@@ -57,8 +57,7 @@ class ProductTestCase(unittest.TestCase):
 
 
     def test_show_product(self):
-        self.learn.pick_a_product()
-        self.learn.show_product()
+        self.learn.pick_a_product(None)
         entered_code = self.learn.entered_code
 
         self.assertEqual(entered_code.code, "")

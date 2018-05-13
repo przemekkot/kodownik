@@ -5,7 +5,7 @@ from kivy.uix.label import Label
 from kivy.graphics.context_instructions import Color
 from kivy.graphics.vertex_instructions import Rectangle
 
-from kodownik.components.CodeEventDispatcher import code_dispatcher
+from kodownik.components.WorkflowEventDispatcher import event_dispatcher
 
 _choose_code = "Wybierz kod"
 
@@ -14,7 +14,7 @@ class ProductName(Label):
     size_hint = (.3, .3)
 
     def __init__(self, **kwargs):
-        code_dispatcher.bind(on_product_change=self.handle_product_change)
+        event_dispatcher.bind(on_product_change=self.handle_product_change)
         super(ProductName, self).__init__(**kwargs)
 
     def handle_product_change(self, event, code):

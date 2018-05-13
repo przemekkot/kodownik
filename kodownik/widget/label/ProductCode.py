@@ -5,7 +5,7 @@ from kivy.graphics.context_instructions import Color
 from kivy.graphics.vertex_instructions import Rectangle
 from kivy.utils import get_color_from_hex
 
-from kodownik.components.CodeEventDispatcher import code_dispatcher
+from kodownik.components.WorkflowEventDispatcher import event_dispatcher
 
 GREY_COLOR = "#969696"
 GREEN_COLOR = "#42ba3e"
@@ -18,8 +18,8 @@ class ProductCode(Label):
     size_hint = (.3, .3)
 
     def __init__(self, **kwargs):
-        code_dispatcher.bind(on_product_change=self.handle_product_change)
-        code_dispatcher.bind(on_code_change=self.handle_code_change)
+        event_dispatcher.bind(on_product_change=self.handle_product_change)
+        event_dispatcher.bind(on_code_change=self.handle_code_change)
         super(ProductCode, self).__init__(**kwargs)
         self.text = ""
 

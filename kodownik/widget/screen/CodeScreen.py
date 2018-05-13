@@ -3,6 +3,8 @@
 from kivy.properties import VariableListProperty
 from kivy.uix.gridlayout import GridLayout
 
+from app_logger import kodlog
+from kodownik.components.WorkflowEventDispatcher import event_dispatcher
 from kodownik.components.CodeManager import CodeManager
 from kodownik.widget.button.AppButtons import AppButtons
 from kodownik.widget.label.ProductCode import ProductCode
@@ -30,4 +32,8 @@ class CodeScreen(GridLayout):
         self.add_widget(self.submit_buttons)
         self.add_widget(self.product_name)
         self.add_widget(self.app_buttons)
+        self.begin()
 
+    def begin(self):
+        kodlog.info("I started showing codes")
+        event_dispatcher.do_pick_a_product()

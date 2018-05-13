@@ -4,7 +4,7 @@ from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
 
 from kodownik.components.Code import Code
-from kodownik.components.CodeEventDispatcher import code_dispatcher
+from kodownik.components.WorkflowEventDispatcher import event_dispatcher
 from kodownik.widget.button.KeyboardButton import KeyboardButton
 
 
@@ -12,12 +12,10 @@ class ScreenKeyboard(GridLayout):
     size_hint = (.5, .8)
     numbers = ["7","8","9","4","5","6","1","2","3", "0", "00"]
     keyboard_buttons = {}
-    code_presenter = Code()
+    code = None
 
-    def __init__(self, code_label=None, code_manager=None, **kwargs):
-        code_dispatcher.bind(on_product_change=self.handle_product_change)
-        self.code_label = code_label
-        self.code_manager = code_manager
+    def __init__(self, **kwargs):
+        # code_dispatcher.bind(on_product_change=self.handle_product_change)
         super(ScreenKeyboard, self).__init__(**kwargs)
 
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
@@ -28,7 +26,8 @@ class ScreenKeyboard(GridLayout):
 
         for number in self.numbers:
             button = KeyboardButton(text=number)
-            button.bind(on_press=self.dispatch_number_entered)
+            # dispatch number on button press
+            button.bind(on_press=self.send_user_number)
             self.keyboard.add_widget(button)
             self.keyboard_buttons[number] = button
         self.add_widget(self.keyboard)
@@ -37,43 +36,46 @@ class ScreenKeyboard(GridLayout):
         for key, button in self.keyboard_buttons.items():
             button.reset_background()
 
-    def handle_product_change(self, event, code):
-        self.show_code(code)
+    def send_user_number(self, button):
+        event_dispatcher.do_handle_user_enter_number(button.text)
 
-    def dispatch_number_entered(self, button):
-        # @todo: add dispatch_number_event
-        code_dispatcher.dispatch_number_event(button.text)
-
-    def show_code(self, code):
+    def show_new_code(self, code):
         self.reset_buttons()
-        self.code_presenter = code
-        self.highlight_next_button()
+        self.code = code
+        self.highlight_next_button(self.code.highlight_number)
 
-    def highlight_next_button(self):
-        self.keyboard_buttons[self.code_presenter.highlight_numbers[-1]].highlight()
+    def highlight_next_button(self, number = None):
+        if not number:
+            self.code.get_next_number()
+            number = self.code.highlight_number
+
+        self.keyboard_buttons[number].highlight()
+
+    def highlighted_button(self):
+        number = self.code.highlight_number
+        return self.keyboard_buttons[number]
 
     def show_next_button(self, button):
-        if not button.to_be_pressed:
-            self.show_code(self.code_manager.code)
-            return
-
-        button.show_green(self.code_manager.code.sign_shown)
-        self.code_label.text = self.code_label.text + button.text
-        try:
-            self.highlight_next_button()
-        except IndexError:
-            if self.code_manager.code.is_code_right(self.code_label.text):
-                self.code_label.is_right()
-            else:
-                self.code_label.is_wrong()
+        pass
+        # if not button.to_be_pressed:
+        #     self.show_code(self.code_manager.code)
+        #     return
+        #
+        # button.show_green(self.code_manager.code.sign_shown)
+        # self.code_label.text = self.code_label.text + button.text
+        # try:
+        #     self.highlight_next_button()
+        # except IndexError:
+        #     if self.code_manager.code.is_code_right(self.code_label.text):
+        #         self.code_label.is_right()
+        #     else:
+        #         self.code_label.is_wrong()
 
     def _keyboard_closed(self):
         self._keyboard.unbind(on_key_down=self._on_keyboard_down)
         self._keyboard = None
 
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
-        if keycode[1] == "enter":
-            self.code_manager.pick_product()
         try:
             number = int(keycode[1][-1])
             if 10 > number >= 0 :
