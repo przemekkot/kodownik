@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 from kivy.event import EventDispatcher
 
+from app_logger import kodlog
+
+
 class WorkflowEventDispatcher(EventDispatcher):
     def __init__(self, **kwargs):
         self.register_event_type('on_pick_a_product')
@@ -11,21 +14,24 @@ class WorkflowEventDispatcher(EventDispatcher):
         self.register_event_type('on_handle_user_submit_code')
         super(WorkflowEventDispatcher, self).__init__(**kwargs)
 
-    def do_pick_a_product(self, value=None):
-        print("I pick a product")
-        self.dispatch('on_pick_a_product', value)
+    def do_pick_a_product(self):
+        kodlog.info("I pick a product")
+        self.dispatch('on_pick_a_product')
 
     def do_show_product(self, code=None):
-        print("I show product")
+        kodlog.info("I show product")
         self.dispatch('on_show_product', code)
 
     def do_handle_user_enter_number(self, value):
+        kodlog.info("I handle user enter number")
         self.dispatch('on_handle_user_enter_number', value)
 
     def do_show_next_number(self, value):
+        kodlog.info("I show next number")
         self.dispatch('on_show_next_number', value)
 
     def do_handle_user_submit_code(self, value):
+        kodlog.info("I handle user submit code")
         self.dispatch('on_handle_user_submit_code', value)
 
     def on_pick_a_product(self, *args):

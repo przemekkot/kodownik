@@ -5,6 +5,7 @@ from kivy.properties import VariableListProperty
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 
+from kodownik.components.WorkflowEventDispatcher import event_dispatcher
 
 _back = "Powrót"
 _next_code = "Następny kod"
@@ -20,10 +21,9 @@ class AppButtons(GridLayout):
     back_button = Button(text=_back, size_hint=(.3, .3))
 
 
-    def __init__(self, code_manager=None, **kwargs):
+    def __init__(self, **kwargs):
         super(AppButtons, self).__init__(**kwargs)
         self.show_buttons()
-        self.code_manager = code_manager
 
     def show_buttons(self):
         self.add_widget(self.back_button)
@@ -35,4 +35,4 @@ class AppButtons(GridLayout):
         self.parent.parent.show_menu()
 
     def choose_next_code(self, button_instance):
-        self.code_manager.pick_product()
+        event_dispatcher.do_pick_a_product()

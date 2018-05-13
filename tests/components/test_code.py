@@ -69,5 +69,35 @@ class CodeTestCase(unittest.TestCase):
 
         self.assertTrue(code1 == code2)
 
+    def test_add_number(self):
+        code = Code(EmptyProduct())
+        code.code = "123"
+
+        self.assertEqual(code.code, "123")
+
+        code.add_number("4")
+        self.assertEqual(code.code, "1234")
+
+        code.add_number(5)
+        self.assertEqual(code.code, "12345")
+
+        code.add_number("")
+        self.assertEqual(code.code, "12345")
+
+    def test_has_quantity(self):
+        code = Code(self.test_product_1)
+
+        self.assertTrue(code.has_quantity("szt"))
+        self.assertFalse(code.has_quantity("kg"))
+
+        code = Code(self.test_product_2)
+        self.assertTrue(code.has_quantity("kg"))
+        self.assertFalse(code.has_quantity("szt"))
+
+        code = Code(EmptyProduct())
+        self.assertTrue(code.has_quantity("szt"))
+        self.assertFalse(code.has_quantity("kg"))
+
+
 if __name__ == '__main__':
     unittest.main()

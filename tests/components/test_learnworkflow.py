@@ -20,7 +20,19 @@ class ProductTestCase(unittest.TestCase):
             name="Test Product",
             quantity_type="szt"
         )
+        self.test_product2 = Product(
+            code="123",
+            name="Test Product",
+            quantity_type="szt"
+        )
+        self.test_product3 = Product(
+            code="3",
+            name="Test Product",
+            quantity_type="szt"
+        )
         self.test_code = Code(self.test_product)
+        self.test_code2 = Code(self.test_product2)
+        self.test_code3 = Code(self.test_product3)
 
         self.cm = CodeManager()
         self.cm.pick_product = Mock(return_value=self.test_code)
@@ -66,17 +78,56 @@ class ProductTestCase(unittest.TestCase):
         self.assertEqual(self.product_name.text, self.test_code.name)
         self.assertEqual(self.product_code.text, "")
 
-        self.assertEqual(self.submit_buttons.highlighted_button().value, self.test_product.quantity_type)
         self.assertEqual(self.screen_keyboard.highlighted_button().text, self.test_code.code)
 
     def test_handle_user_enter_number(self):
-        self.assertTrue(False)
+        self.learn.pick_a_product(None)
+        self.learn.handle_user_enter_number(None, "1")
+        self.assertEqual(self.product_code.text, "1")
+        self.assertEqual(self.submit_buttons.highlighted_button().value, self.test_product.quantity_type)
+
+        self.learn.pick_a_product(None)
+        self.learn.handle_user_enter_number(None, "0")
+        self.assertEqual(self.product_code.text, "")
+        self.assertEqual(self.submit_buttons.highlighted_button(), None)
+        self.assertEqual(self.screen_keyboard.highlighted_button().text, "1")
+
+
 
     def test_show_next_number(self):
-        self.assertTrue(False)
+        self.learn.pick_a_product(None)
+        self.learn.show_product(event=None, code=self.test_code2)
+        self.learn.handle_user_enter_number(None, "1")
+
+        self.assertEqual(self.product_code.text, "1")
+        self.assertNotEqual(self.screen_keyboard.highlighted_button(), None)
+        self.assertEqual(self.screen_keyboard.highlighted_button().text, "2")
+        self.assertEqual(self.submit_buttons.highlighted_button(), None)
 
     def test_handle_user_submit_code(self):
-        self.assertTrue(False)
+        self.learn.pick_a_product(None)
+        self.learn.show_product(event=None, code=self.test_code3)
+        self.learn.handle_user_enter_number(None, "3")
+
+        self.assertEqual(self.product_code.text, "3")
+        self.assertEqual(self.submit_buttons.highlighted_button().value, self.test_product.quantity_type)
+
+        self.learn.handle_user_submit_code(None, "szt")
+        self.assertEqual(self.product_code.text, "")
+        self.assertEqual(self.submit_buttons.highlighted_button(), None)
+        self.assertEqual(self.screen_keyboard.highlighted_button().text, "1")
+
+        self.learn.pick_a_product(None)
+        self.learn.show_product(event=None, code=self.test_code3)
+        self.learn.handle_user_enter_number(None, "3")
+
+        self.assertEqual(self.product_code.text, "3")
+        self.assertEqual(self.submit_buttons.highlighted_button().value, self.test_product.quantity_type)
+
+        self.learn.handle_user_submit_code(None, "kg")
+        self.assertEqual(self.product_code.text, "")
+        self.assertEqual(self.submit_buttons.highlighted_button(), None)
+        self.assertEqual(self.screen_keyboard.highlighted_button().text, "3")
 
 if __name__ == '__main__':
     unittest.main()

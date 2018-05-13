@@ -4,6 +4,7 @@ from kivy.properties import VariableListProperty
 from kivy.uix.gridlayout import GridLayout
 
 from app_logger import kodlog
+from kodownik.components.LearningWorkflow import LearningWorkflow
 from kodownik.components.WorkflowEventDispatcher import event_dispatcher
 from kodownik.components.CodeManager import CodeManager
 from kodownik.widget.button.AppButtons import AppButtons
@@ -32,6 +33,14 @@ class CodeScreen(GridLayout):
         self.add_widget(self.submit_buttons)
         self.add_widget(self.product_name)
         self.add_widget(self.app_buttons)
+
+        self.learning = LearningWorkflow(
+            cm=self.code_manager,
+            product_code=self.product_code,
+            product_name=self.product_name,
+            screen_keyboard=self.screen_keyboard,
+            submit_buttons=self.submit_buttons
+        )
         self.begin()
 
     def begin(self):

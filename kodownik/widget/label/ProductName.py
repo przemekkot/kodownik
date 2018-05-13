@@ -14,10 +14,9 @@ class ProductName(Label):
     size_hint = (.3, .3)
 
     def __init__(self, **kwargs):
-        event_dispatcher.bind(on_product_change=self.handle_product_change)
         super(ProductName, self).__init__(**kwargs)
 
-    def handle_product_change(self, event, code):
+    def show_code(self, event, code):
         self.setName(code.name)
 
     def setName(self, name):

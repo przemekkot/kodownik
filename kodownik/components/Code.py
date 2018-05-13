@@ -28,3 +28,14 @@ class Code:
             return None
 
         return self.buttons_to_press.pop(0)
+
+    def add_number(self, number):
+        if isinstance(number, str):
+            if number.strip() == "":
+                pass
+            self.code += number
+        else:
+            self.code += str(int(number))
+
+    def has_quantity(self, quantity):
+        return self.quantity == quantity

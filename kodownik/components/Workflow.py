@@ -15,7 +15,7 @@ class Workflow:
         """ handle number users enters"""
         pass
 
-    def show_next_number(self, event):
+    def show_next_number(self, event, code):
         """ show next number """
         pass
 

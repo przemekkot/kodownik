@@ -37,7 +37,7 @@ class ScreenKeyboard(GridLayout):
             button.reset_background()
 
     def send_user_number(self, button):
-        event_dispatcher.do_handle_user_enter_number(button.text)
+        event_dispatcher.do_handle_user_enter_number(None, button.text)
 
     def show_new_code(self, code):
         self.reset_buttons()
@@ -45,15 +45,20 @@ class ScreenKeyboard(GridLayout):
         self.highlight_next_button(self.code.highlight_number)
 
     def highlight_next_button(self, number = None):
+        self.reset_buttons()
         if not number:
             self.code.get_next_number()
             number = self.code.highlight_number
 
-        self.keyboard_buttons[number].highlight()
+        if number != None:
+            try:
+                self.keyboard_buttons[str(number)].highlight()
+            except Exception as e:
+                pass
 
     def highlighted_button(self):
         number = self.code.highlight_number
-        return self.keyboard_buttons[number]
+        return self.keyboard_buttons[str(number)]
 
     def show_next_button(self, button):
         pass

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from kodownik.components.Code import Code
-from kodownik.components.WorkflowEventDispatcher import event_dispatcher
 from kodownik.components.ProductLists import ProductLists
 from app_logger import kodlog
 
