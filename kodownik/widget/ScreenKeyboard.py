@@ -37,7 +37,7 @@ class ScreenKeyboard(GridLayout):
             button.reset_background()
 
     def send_user_number(self, button):
-        event_dispatcher.do_handle_user_enter_number(None, button.text)
+        event_dispatcher.do_handle_user_enter_number(button.text)
 
     def show_new_code(self, code):
         self.reset_buttons()
