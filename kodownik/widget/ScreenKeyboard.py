@@ -15,7 +15,6 @@ class ScreenKeyboard(GridLayout):
     code = None
 
     def __init__(self, **kwargs):
-        # code_dispatcher.bind(on_product_change=self.handle_product_change)
         super(ScreenKeyboard, self).__init__(**kwargs)
 
         self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
@@ -51,14 +50,13 @@ class ScreenKeyboard(GridLayout):
             number = self.code.highlight_number
 
         if number != None:
-            try:
-                self.keyboard_buttons[str(number)].highlight()
-            except Exception as e:
-                pass
+            self.keyboard_buttons[str(number)].highlight()
 
     def highlighted_button(self):
         number = self.code.highlight_number
-        return self.keyboard_buttons[str(number)]
+        if number != None:
+            return self.keyboard_buttons[str(number)]
+        return KeyboardButton(text="")
 
     def show_next_button(self, button):
         pass

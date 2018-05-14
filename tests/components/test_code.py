@@ -98,6 +98,16 @@ class CodeTestCase(unittest.TestCase):
         self.assertTrue(code.has_quantity("szt"))
         self.assertFalse(code.has_quantity("kg"))
 
+    def test_reset(self):
+        code = Code(self.test_product_1)
+        self.assertEqual(code.highlight_number, "1")
+
+        code.get_next_number()
+        self.assertEqual(code.highlight_number, "2")
+
+        code.reset()
+        code.get_next_number()
+        self.assertEqual(code.highlight_number, "2")
 
 if __name__ == '__main__':
     unittest.main()

@@ -20,6 +20,10 @@ class Code:
     def __eq__(self, other):
         return self.code == other.code
 
+    def reset(self):
+        self.buttons_to_press = list(self.code)
+        self.highlight_number = self.get_first_number()
+
     def get_next_number(self):
         self.highlight_number = self.get_first_number()
 
